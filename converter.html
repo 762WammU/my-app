@@ -5,75 +5,22 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Converter - Kyaw Zin Thant</title>
-  <link rel="stylesheet" href="assets/style.css" />
 </head>
 <body>
-  <header>
-    <nav class="nav">
-      <a href="index.html" class="brand">My Portfolio</a>
-      <a href="converter.html">Converter</a>
-      <a href="grading.html">Grading</a>
-      <a href="change.html">Change</a>
-      <a href="geolocation.html">Geolocation</a>
-    </nav>
-  </header>
-
-  <main class="container">
-    <div class="open-screen" role="status" aria-live="polite">
-      <h2>Kyaw Zin Thant <span class="muted">(240702404180)</span></h2>
-    </div>
-
-    <section class="card">
-      <h1>Unit Converter</h1>
-      <p class="subtitle">Temperature (°C ⇄ °F) and Length (km ⇄ mi)</p>
-
-      <h2>Temperature</h2>
-      <div class="grid2">
-        <label>Celsius (°C)<input id="celsius" type="number" step="any" /></label>
-        <label>Fahrenheit (°F)<input id="fahrenheit" type="number" step="any" /></label>
-      </div>
-      <div class="actions">
-        <button id="cToF">C → F</button>
-        <button id="fToC">F → C</button>
-      </div>
-
-      <h2>Length</h2>
-      <div class="grid2">
-        <label>Kilometers (km)<input id="km" type="number" step="any" /></label>
-        <label>Miles (mi)<input id="mi" type="number" step="any" /></label>
-      </div>
-      <div class="actions">
-        <button id="kToM">km → mi</button>
-        <button id="mToK">mi → km</button>
-      </div>
-    </section>
-  </main>
-
-  <footer><p>© <span id="year"></span></p></footer>
+  <h1>Kyaw Zin Thant (240702404180)</h1>
+  <h2>Simple Converter</h2>
+  <label>Celsius <input id="celsius" type="number" /></label>
+  <button onclick="convertToF()">C → F</button>
+  <p id="result"></p>
 
   <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    function isNumber(v){ return typeof v === 'number' && !Number.isNaN(v); }
-    document.getElementById('cToF').addEventListener('click', ()=>{
-      const cv = parseFloat(document.getElementById('celsius').value);
-      if (!isNumber(cv)) return alert('Enter Celsius');
-      document.getElementById('fahrenheit').value = (cv * 9/5 + 32).toFixed(2);
-    });
-    document.getElementById('fToC').addEventListener('click', ()=>{
-      const fv = parseFloat(document.getElementById('fahrenheit').value);
-      if (!isNumber(fv)) return alert('Enter Fahrenheit');
-      document.getElementById('celsius').value = ((fv - 32) * 5/9).toFixed(2);
-    });
-    document.getElementById('kToM').addEventListener('click', ()=>{
-      const kv = parseFloat(document.getElementById('km').value);
-      if (!isNumber(kv)) return alert('Enter km');
-      document.getElementById('mi').value = (kv * 0.621371).toFixed(4);
-    });
-    document.getElementById('mToK').addEventListener('click', ()=>{
-      const mv = parseFloat(document.getElementById('mi').value);
-      if (!isNumber(mv)) return alert('Enter mi');
-      document.getElementById('km').value = (mv / 0.621371).toFixed(4);
-    });
+    function convertToF(){
+      const c = parseFloat(document.getElementById('celsius').value);
+      if (isNaN(c)) { alert("Enter a number"); return; }
+      document.getElementById('result').innerText = c + "°C = " + (c*9/5+32).toFixed(2) + "°F";
+    }
   </script>
+
+  <p><a href="index.html">Back to Index</a></p>
 </body>
 </html>
