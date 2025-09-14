@@ -3,12 +3,55 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Index - Kyaw Zin Thant</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Converter - Kyaw Zin Thant</title>
 </head>
 <body>
   <h1>Kyaw Zin Thant (240702404180)</h1>
-  <p>This is the index (default) page.</p>
-  <p><a href="converter.html">Go to Converter</a></p>
+  <h2>Unit Converter</h2>
+  <p>Temperature (°C ⇄ °F) and Length (km ⇄ mi)</p>
+
+  <h3>Temperature</h3>
+  <label>Celsius (°C) <input id="celsius" type="number"></label>
+  <label>Fahrenheit (°F) <input id="fahrenheit" type="number"></label>
+  <button onclick="cToF()">C → F</button>
+  <button onclick="fToC()">F → C</button>
+
+  <h3>Length</h3>
+  <label>Kilometers (km) <input id="km" type="number"></label>
+  <label>Miles (mi) <input id="mi" type="number"></label>
+  <button onclick="kmToMi()">km → mi</button>
+  <button onclick="miToKm()">mi → km</button>
+
+  <footer>
+    <p>© 2025</p>
+  </footer>
+
+  <script>
+    function cToF(){
+      let c = parseFloat(document.getElementById('celsius').value);
+      if(!isNaN(c)){
+        document.getElementById('fahrenheit').value = (c*9/5+32).toFixed(2);
+      }
+    }
+    function fToC(){
+      let f = parseFloat(document.getElementById('fahrenheit').value);
+      if(!isNaN(f)){
+        document.getElementById('celsius').value = ((f-32)*5/9).toFixed(2);
+      }
+    }
+    function kmToMi(){
+      let km = parseFloat(document.getElementById('km').value);
+      if(!isNaN(km)){
+        document.getElementById('mi').value = (km*0.621371).toFixed(2);
+      }
+    }
+    function miToKm(){
+      let mi = parseFloat(document.getElementById('mi').value);
+      if(!isNaN(mi)){
+        document.getElementById('km').value = (mi/0.621371).toFixed(2);
+      }
+    }
+  </script>
 </body>
 </html>
